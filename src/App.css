@@ -1,38 +1,97 @@
-.App {
-  text-align: center;
+.form-with-button {
+  display: inline !important;
+  width: 75%;
+}
+.form-with-icons {
+  display: inline !important;
+  width: 92%;
+}
+#search-icons {
+  display: inline;
+  margin-right: 10px;
+}
+.nk-wg7 {
+	display: flex;
+	flex-wrap: wrap
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.nk-wg7>* {
+	flex-grow: 1;
+	width: 100%
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.nk-wg7-stats {
+	line-height: 1.3
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.nk-wg7-stats-group {
+	display: flex;
+	align-items: flex-start;
+	margin-top: 1.5rem
 }
 
-.App-link {
-  color: #61dafb;
+.nk-wg7-stats .number {
+	font-size: 1rem;
+	font-weight: 700
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nk-wg7-stats .number-lg {
+	font-size: 2.25rem;
+	letter-spacing: -0.03em;
+	font-weight: 400
+}
+
+.nk-wg7-stats .number-lg:first-child {
+	margin-top: -.125rem
+}
+
+.nk-wg7-title,
+.nk-wg7-note {
+	font-size: 13px;
+	font-weight: 500;
+	color: #526484
+}
+
+.is-dark .nk-wg7-title,
+.is-dark .nk-wg7-note {
+	color: #6baafe
+}
+
+.number+.nk-wg7-title,
+.number+.nk-wg7-note {
+	margin-top: 0.625rem
+}
+
+.nk-wg7-title+.number,
+.nk-wg7-note+.number {
+	margin-top: 0.4375rem
+}
+
+.number-lg+.nk-wg7-title,
+.number-lg+.nk-wg7-note {
+	margin-top: 0.25rem
+}
+
+.nk-wg7-title+.number-lg,
+.nk-wg7-note+.number-lg {
+	margin-top: 0.25rem
+}
+
+.nk-wg7-foot {
+	width: 100%;
+	margin-top: 0.75rem
+}
+
+.nk-wg7-note {
+	font-weight: 400;
+	font-style: italic
+}
+
+@media (min-width: 992px) {
+	.nk-wg7>* {
+		width: 100%
+	}
+	.nk-wg7-foot {
+		margin-top: .75rem
+	}
 }
