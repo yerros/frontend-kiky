@@ -1,10 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from "react";
+import moment from "moment";
 import { connect } from "react-redux";
 import { setModal } from "../../actions";
-import { Get } from "../../utils";
+import { Delete, Get } from "../../utils";
 import UsersModal from "./UsersModal";
 import Avatar from "react-avatar";
+import { toast } from "react-toastify";
 
 class Users extends Component {
   constructor() {
@@ -19,14 +21,28 @@ class Users extends Component {
   componentDidMount() {
     this.getCustomerList();
   }
+  componentDidUpdate() {
+    this.getCustomerList();
+  }
   getCustomerList = () => {
     Get("customer").then((res) => {
-      console.log(res);
       this.setState({
         totalUser: res.totalUser,
         customers: res.customer,
       });
     });
+  };
+  handleDelete = (id) => {
+    const confirm = window.confirm("Are you sure to delete this Category?");
+    if (confirm) {
+      Delete(`customer/${id}`).then((res) => {
+        this.setState({
+          customers: [],
+        });
+        this.getCustomerList();
+      });
+    }
+    toast.success("Data succefuly delete");
   };
   render() {
     return (
@@ -135,7 +151,7 @@ class Users extends Component {
                 <div className="nk-tb-list is-separate mb-3">
                   <div className="nk-tb-item nk-tb-head">
                     <div className="nk-tb-col">
-                      <span className="sub-text">User</span>
+                      <span className="sub-text">Customer</span>
                     </div>
                     <div className="nk-tb-col tb-col-lg">
                       <span className="sub-text">Address</span>
@@ -144,7 +160,7 @@ class Users extends Component {
                       <span className="sub-text">Phone</span>
                     </div>
                     <div className="nk-tb-col tb-col-lg">
-                      <span className="sub-text">Last Order</span>
+                      <span className="sub-text">Registered</span>
                     </div>
                     <div className="nk-tb-col tb-col-md">
                       <span className="sub-text">Status</span>
@@ -178,10 +194,17 @@ class Users extends Component {
                           <span>{i.phone}</span>
                         </div>
                         <div className="nk-tb-col tb-col-lg">
-                          <span>10 Feb 2020</span>
+                          <span>
+                            {moment(i.createAt).format("Do MMMM YYYY")}
+                          </span>
                         </div>
                         <div className="nk-tb-col tb-col-md">
-                          <span className="tb-status text-success">Active</span>
+                          <button
+                            onClick={() => this.handleDelete(i._id)}
+                            className="btn btn-transparent"
+                          >
+                            <em className="icon ni ni-trash icon-delete"></em>
+                          </button>
                         </div>
                       </div>
                     );

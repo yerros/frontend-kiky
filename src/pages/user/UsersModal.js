@@ -23,9 +23,8 @@ class UsersModal extends Component {
     const { customerName, address, phone } = this.state;
     const data = { customerName, address, phone };
     axios.post("http://localhost:5000/customer", data).then((res) => {
-      toast.success("Wow its easy !!");
+      toast.success("Customer succefully added");
       this.props.sendModal(!this.props.showModal);
-      console.log(res);
     });
   };
   render() {

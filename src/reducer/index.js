@@ -1,13 +1,7 @@
-import {
-  SHOW_MODAL,
-  SET_ALERT,
-  REMOVE_ALERT,
-  CLEAR_ALERT,
-} from "../actions/types";
+import { SHOW_MODAL } from "../actions/types";
 
 const initialState = {
   showModal: false,
-  alert: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -18,12 +12,6 @@ const reducer = (state = initialState, action) => {
       return {
         showModal: payload,
       };
-    case SET_ALERT:
-      return [...state, payload];
-    case REMOVE_ALERT:
-      return state.filter((alert) => alert.id !== payload);
-    case CLEAR_ALERT:
-      return (state = []);
     default:
       return state;
   }
