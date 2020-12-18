@@ -12,7 +12,7 @@ function Layout(props) {
         <div className="nk-main ">
           <Sidebar />
           <div className="nk-wrap ">
-            <ToastContainer autoClose={5000} />
+            <ToastContainer autoClose={3000} />
             <Header />
             {props.children}
             <Footer />

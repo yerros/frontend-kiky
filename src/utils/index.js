@@ -38,3 +38,10 @@ export const Put = (path, body) => {
       .catch((err) => reject(err));
   });
 };
+
+export const formatRupiah = (rupiah) => {
+  var reverse = rupiah.toString().split("").reverse().join("");
+  let ribuan = reverse.match(/\d{1,3}/g);
+  ribuan = ribuan.join(".").split("").reverse().join("");
+  return ribuan;
+};
