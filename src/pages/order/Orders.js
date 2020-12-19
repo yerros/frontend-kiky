@@ -135,7 +135,7 @@ export default class Orders extends Component {
                     if (i.status === 0) {
                       badge = (
                         <span className="badge badge-sm badge-dot has-bg badge-light d-none d-mb-inline-flex">
-                          On Hold
+                          Pending
                         </span>
                       );
                     } else if (i.status === 1) {
@@ -161,7 +161,7 @@ export default class Orders extends Component {
                       <div className="nk-tb-item" key={i._id}>
                         <div className="nk-tb-col">
                           <span className="tb-lead">
-                            <a href="#">#{i.orderID}</a>
+                            <Link to={`/orders/${i._id}`}>#{i.orderID}</Link>
                           </span>
                         </div>
                         <div className="nk-tb-col tb-col-md">
@@ -185,7 +185,7 @@ export default class Orders extends Component {
                         </div>
                         <div className="nk-tb-col">
                           <span className="tb-lead">
-                            Rp {formatRupiah(i.amount)}
+                            Rp. {formatRupiah(i.amount)}
                           </span>
                         </div>
                       </div>
